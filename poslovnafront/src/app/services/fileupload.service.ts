@@ -5,15 +5,15 @@ import { of } from 'rxjs';
 
 @Injectable()
 export class UploadFileService {
-  private rtgsUrl = 'http://localhost:8080/api/fileupload/rtgs';
-  private clearingUrl = 'http://localhost:8080/api/fileupload/clearing';
+  private rtgsUrl = 'http://localhost:8085/api/upload/rtgs';
+  private clearingUrl = 'http://localhost:8085/api/upload/clearing';
 
   pushFileToStorage(file: File): Observable<HttpEvent<{}>> {
     let formdata: FormData = new FormData();
 
     formdata.append('file', file);
 
-    const req = new HttpRequest('POST', '/post', formdata, {
+    const req = new HttpRequest('POST', this.rtgsUrl, formdata, {
       reportProgress: true,
       responseType: 'text'
     });
