@@ -8,12 +8,14 @@ import { AppComponent } from './app.component';
 import { HeaderComponent } from './header/header.component';
 import { AppRoutingModule } from './/app-routing.module';
 import { XmlImportComponent } from './xml-import/xml-import.component';
+import { ClearingimportComponent } from './clearingimport/clearingimport.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     HeaderComponent,
-    XmlImportComponent
+    XmlImportComponent,
+    ClearingimportComponent
   ],
   imports: [
     FormsModule,
