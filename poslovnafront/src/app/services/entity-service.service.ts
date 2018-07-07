@@ -1,8 +1,5 @@
 import { HttpClient, HttpRequest, HttpResponse} from '@angular/common/http';
-
-import 'rxjs/add/operator/map';
-import { Observable } from 'rxjs/Rx';
-
+import { Observable } from 'rxjs/Observable';
 
 
 export abstract class AbstractService<Entity, Key> {
@@ -12,29 +9,23 @@ export abstract class AbstractService<Entity, Key> {
     this.actionUrl = this.actionUrl + url;
   }
   getAll(): Observable<any[]> {
-    return this.http.get(this.actionUrl).map(resp => resp as Entity[]);
+    return this.http.get<any[]>(this.actionUrl);
   }
 
   getAllByZone(zoneId: number): Observable<Entity[]> {
-    return this.http.get(this.actionUrl + '/getall/' + zoneId)
-      .map(resp => resp as Entity[]);
+    return this.http.get<Entity[]>(this.actionUrl + '/getall/' + zoneId);
   }
 
   getOne(id: Key): Observable<any> {
-    return this.http.get(`${this.actionUrl}/${id}`)
-      .map(resp => resp as Entity);
+    return this.http.get<any>(`${this.actionUrl}/${id}`);
   }
 
   insert(toInsert: any): Observable<Entity> {
-    console.log(this.actionUrl + '/new');
-    return this.http.post(this.actionUrl + '/new', toInsert)
-      .map(resp => resp as Entity);
+    return this.http.post<Entity>(this.actionUrl + '/new', toInsert);
   }
 
   update(toUpdate: any): Observable<any> {
-
-    return this.http.put(this.actionUrl + '/update/', toUpdate);
-
+    return this.http.put<any>(this.actionUrl + '/update/', toUpdate);
   }
 
 }
