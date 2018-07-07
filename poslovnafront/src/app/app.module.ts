@@ -10,6 +10,9 @@ import { ClearingimportComponent } from './clearingimport/clearingimport.compone
 import { ExportComponent } from './export/export.component';
 import { HomeComponent } from './home/home.component';
 import { AppRoutingModule } from './app-routing/app-routing.module';
+import { PanelComponent } from './panel/panel.component';
+import { CountryComponent } from './panel/country/country.component';
+import { CityComponent } from './panel/city/city.component';
 
 @NgModule({
   declarations: [
@@ -18,7 +21,10 @@ import { AppRoutingModule } from './app-routing/app-routing.module';
     XmlImportComponent,
     ClearingimportComponent,
     ExportComponent,
-    HomeComponent
+    HomeComponent,
+    PanelComponent,
+    CountryComponent,
+    CityComponent
   ],
   imports: [
     FormsModule,

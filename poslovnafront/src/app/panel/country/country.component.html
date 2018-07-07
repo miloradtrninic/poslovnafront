@@ -1,0 +1,74 @@
+<h1 class="page-header">
+  Drzave
+  <button class="btn btn-primary pull-right" data-toggle="modal" data-target="#addCountry">
+    <i class="glyphicon glyphicon-plus"></i>Add country</button>
+</h1>
+<hr/>
+
+<div class="table-responsive">
+  <table class="table table-sm table-striped table-bordered">
+    <thead class="thead-dark">
+      <tr class="d-flex">
+        <th class="col-2">#</th>
+        <th class="col-6">Naziv</th>
+        <th class="col-2">&nbsp;</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr class="d-flex" *ngFor="let count of countries; let i = index">
+        <td class="col-2">{{count.id}}</td>
+        <td class="col-6">
+          <b>{{ count.name | uppercase }}</b>
+        </td>
+        <td class="col-2">
+          <button class="btn btn-success" (click)="fillField(count)" data-toggle="modal" data-target="#editCategory">
+            Edit country </button>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+
+
+
+
+<!--MODALNI ZA DODAVANJE DRZAVE -->
+<div id="addCategory" class="modal fade" role="dialog">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-body">
+        <form class="form-horizontal" #addForm="ngForm" (submit)="addCountry()">
+          <div class="form-group">
+            <label for="name" class="col-sm-2 control-label"> Name: </label>
+            <div class="col-sm-10">
+              <input type="text" ngModel #name="ngModel" name="name" class="form-control" id="name">
+            </div>
+          </div>
+          <input type="submit" class="btn btn-primary" value="Add " />
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- MODALNI ZA EDIT KATEGORIJE -->
+<div id="editCountry" class="modal fade" role="dialog">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-body">
+        <form class="form-horizontal" #editForm="ngForm" (ngSubmit)="editCountry()">
+
+          <div class="form-group">
+            <label for="name" class="col-sm-2 control-label"> Name: </label>
+            <div class="col-sm-10">
+              <input type="text" ngModel #name="ngModel" name="name" class="form-control" id="name">
+            </div>
+          </div>
+          <div class="form-group">
+            <input type="submit" class="btn btn-primary" value="Edit country" />
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
