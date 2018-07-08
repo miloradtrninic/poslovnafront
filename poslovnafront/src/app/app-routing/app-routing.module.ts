@@ -18,7 +18,7 @@ const routes: Routes = [
   { path: 'home', component : HomeComponent},
   {path: 'panel', component: PanelComponent , children : [
     {path: 'drzava' , component: CountryComponent},
-    {path: 'city', component: CityComponent}
+    {path: 'naseljenomesto', component: CityComponent}
   ]},
 ];
 

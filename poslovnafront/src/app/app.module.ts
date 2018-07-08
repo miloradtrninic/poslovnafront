@@ -13,6 +13,11 @@ import { AppRoutingModule } from './app-routing/app-routing.module';
 import { PanelComponent } from './panel/panel.component';
 import { CountryComponent } from './panel/country/country.component';
 import { CityComponent } from './panel/city/city.component';
+import { CountryService } from './services/country.service';
+import { CityService } from './services/city.service';
+import { KursnaListaService } from './services/kursnalista.service';
+import { ValutaService } from './services/valuta.service';
+import { VrstaPlacanjaService } from './services/vrstaplacanja.service';
 
 @NgModule({
   declarations: [
@@ -33,7 +38,13 @@ import { CityComponent } from './panel/city/city.component';
     AppRoutingModule
   ],
   providers: [
-    UploadFileService
+    UploadFileService,
+    CountryService,
+    CityService,
+    KursnaListaService,
+    ValutaService,
+    VrstaPlacanjaService,
+
   ],
   bootstrap: [AppComponent]
 })

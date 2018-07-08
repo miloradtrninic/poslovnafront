@@ -1,9 +1,10 @@
 <h1 class="page-header">
   Drzave
-  <button class="btn btn-primary pull-right" data-toggle="modal" data-target="#addCountry">
-    <i class="glyphicon glyphicon-plus"></i>Add country</button>
+  <button class="btn btn-primary pull-right" data-toggle="modal" data-target="#addForm">
+    <i class="fa fa-plus"></i>Add country</button>
 </h1>
 <hr/>
+
 
 <div class="table-responsive">
   <table class="table table-sm table-striped table-bordered">
@@ -21,7 +22,7 @@
           <b>{{ count.name | uppercase }}</b>
         </td>
         <td class="col-2">
-          <button class="btn btn-success" (click)="fillField(count)" data-toggle="modal" data-target="#editCategory">
+          <button class="btn btn-success" (click)="fillField(count)" data-toggle="modal" data-target="#editCountry">
             Edit country </button>
         </td>
       </tr>
@@ -33,7 +34,7 @@
 
 
 <!--MODALNI ZA DODAVANJE DRZAVE -->
-<div id="addCategory" class="modal fade" role="dialog">
+<div id="addForm" class="modal fade" role="dialog">
   <div class="modal-dialog">
     <div class="modal-content">
       <div class="modal-body">
@@ -51,8 +52,11 @@
   </div>
 </div>
 
+
+
+
 <!-- MODALNI ZA EDIT KATEGORIJE -->
-<div id="editCountry" class="modal fade" role="dialog">
+<!-- <div id="editCountry" class="modal fade" role="dialog">
   <div class="modal-dialog">
     <div class="modal-content">
       <div class="modal-body">
@@ -71,4 +75,4 @@
       </div>
     </div>
   </div>
-</div>
+</div> -->
