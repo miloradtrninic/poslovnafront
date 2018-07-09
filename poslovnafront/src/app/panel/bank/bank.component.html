@@ -4,52 +4,101 @@
 <hr/>
 
 <div class="table-responsive">
-  <table class="table table-sm table-striped table-bordered">
+  <table class="table table-condensed table-striped table-bordered">
     <thead class="thead-light">
     <tr>
       <th class="col-xs-1">PIB</th>
       <th class="col-xs-1">Naziv</th>
       <th class="col-xs-1">Adresa</th>
-      <th class="col-xs-2">Email</th>
+      <th class="col-xs-1">Email</th>
       <th class="col-xs-1">Web</th>
-      <th class="col-xs-2">Telefon</th>
+      <th class="col-xs-1">Telefon</th>
       <th class="col-xs-1">Fax</th>
       <th class="col-xs-1">Sifra</th>
       <th class="col-xs-1">SWIFT</th>
       <th class="col-xs-1">Broj racuna</th>
+      <th>&nbsp;</th>
     </tr>
     </thead>
     <tbody>
     <tr *ngFor="let banka of pageset.content; let i = index">
-      <td class="col-1">{{banka.PIB}}</td>
-      <td class="col-1">
+      <td class="col-xs-1">{{banka.pib}}</td>
+      <td class="col-xs-1">
         <b>{{ banka.naziv }}</b>
       </td>
-      <td class="col-1">
+      <td class="col-xs-1">
         <b>{{ banka.adresa }}</b>
       </td>
-      <td class="col-2">
-        <b>{{ banka.email }}</b>
+      <td class="col-xs-1">
+        <b><a href="mailto:{{banka.email}}">{{ banka.email }}</a> </b>
       </td>
-      <td class="col-1">
-        <b>{{ banka.web }}</b>
+      <td class="col-xs-1">
+        <b><a target="_blank" href="{{ banka.web }}">{{ banka.web }}</a></b>
       </td>
-      <td class="col-2">
+      <td class="col-xs-1">
         <b>{{ banka.telefon }}</b>
       </td>
-      <td class="col-1">
+      <td class="col-xs-1">
         <b>{{ banka.fax }} </b>
       </td>
-      <td class="col-1">
+      <td class="col-xs-1">
         <b>{{ banka.sifraBanke }} </b>
       </td>
-      <td class="col-1">
+      <td class="col-xs-1">
         <b>{{ banka.swift }} </b>
       </td>
-      <td class="col-1">
+      <td class="col-xs-1">
         <b>{{ banka.racunBrojRacuna }} </b>
+      </td>
+      <td class="col-xs-1">
+        <button class="btn btn-success"
+                (click)="selectedBrRacuna=banka.racunBrojRacuna"
+                data-toggle="modal" data-target="#izvodModal">Izvod</button>
       </td>
     </tr>
     </tbody>
   </table>
+</div>
+
+<nav>
+  <ul class="pagination pagination-sm justify-content-center" *ngIf="pageset.totalPages > 0">
+    <li class="page-item">
+      <a class="page-link" *ngIf="!pageset.first" (click)="search(0)">
+        <<</a>
+    </li>
+    <li class="page-item">
+      <a class="page-link" *ngIf="!pageset.first" (click)="search(page-1)">
+        <</a>
+    </li>
+    <li *ngFor="let n of range()" [ngClass]="{'page-item': true}">
+      <a [ngClass]="{'page-link': true, 'active': n == page}" (click)="search(n)" *ngIf="n != page">{{n+1}}</a>
+      <span [ngClass]="{'page-link': true, 'active': n == page}" *ngIf="n == page">{{n+1}}</span>
+    </li>
+    <li class="page-item">
+      <a class="page-link" *ngIf="!pageset.last" (click)="search(pagePlus(1))">></a>
+    </li>
+    <li class="page-item">
+      <a class="page-link" *ngIf="!pageset.last" (click)="search(pageset.totalPages - 1)">>></a>
+    </li>
+  </ul>
+</nav>
+
+<div id="izvodModal" class="modal fade" role="dialog">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-body">
+        <form class="form" #f="ngForm" (ngSubmit)="downloadXml()">
+          <div class="form-group">
+            <label>Pocetak</label>
+            <input type="date" ngModel #start="ngModel" class="form-control" name="start">
+          </div>
+          <div class="form-group">
+            <label>Kraj</label>
+            <input type="date" ngModel #end="ngModel" class="form-control" name="end">
+          </div>
+          <button type="submit" class="btn btn-primary btn-block">Preuzmi</button>
+        </form>
+      </div>
+    </div>
+  </div>
 </div>

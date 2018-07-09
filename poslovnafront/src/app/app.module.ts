@@ -19,6 +19,7 @@ import { KursnaListaService } from './services/kursnalista.service';
 import { ValutaService } from './services/valuta.service';
 import { VrstaPlacanjaService } from './services/vrstaplacanja.service';
 import { BankComponent } from './panel/bank/bank.component';
+import {BankService} from './services/bank.service';
 
 @NgModule({
   declarations: [
@@ -46,6 +47,7 @@ import { BankComponent } from './panel/bank/bank.component';
     KursnaListaService,
     ValutaService,
     VrstaPlacanjaService,
+    BankService
 
   ],
   bootstrap: [AppComponent]

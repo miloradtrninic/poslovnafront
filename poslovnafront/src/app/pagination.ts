@@ -31,7 +31,7 @@ export class Pagination<T, N> {
   search(i): void {
     this.page = i;
     window.scrollTo(0, 0);
-    this.entityService.getAll(this.page, 12).subscribe(
+    this.entityService.getAll(this.page, 10).subscribe(
       (pageset: Page<T>) => {
         this.pageset = pageset;
         this.page = pageset.number;

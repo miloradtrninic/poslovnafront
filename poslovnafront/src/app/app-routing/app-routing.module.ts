@@ -9,6 +9,7 @@ import { HomeComponent } from '../home/home.component';
 import { PanelComponent } from '../panel/panel.component';
 import { CountryComponent } from '../panel/country/country.component';
 import { CityComponent } from '../panel/city/city.component';
+import {BankComponent} from '../panel/bank/bank.component';
 
 
 const routes: Routes = [
@@ -18,7 +19,8 @@ const routes: Routes = [
   { path: 'home', component : HomeComponent},
   {path: 'panel', component: PanelComponent , children : [
     {path: 'drzava' , component: CountryComponent},
-    {path: 'naseljenomesto', component: CityComponent}
+    {path: 'naseljenomesto', component: CityComponent},
+    {path: 'banka' , component: BankComponent}
   ]},
 ];
 
