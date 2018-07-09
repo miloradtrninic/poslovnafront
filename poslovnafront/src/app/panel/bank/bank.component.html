@@ -1,0 +1,55 @@
+<h1 class="page-header">
+  Banke
+</h1>
+<hr/>
+
+<div class="table-responsive">
+  <table class="table table-sm table-striped table-bordered">
+    <thead class="thead-light">
+    <tr>
+      <th class="col-xs-1">PIB</th>
+      <th class="col-xs-1">Naziv</th>
+      <th class="col-xs-1">Adresa</th>
+      <th class="col-xs-2">Email</th>
+      <th class="col-xs-1">Web</th>
+      <th class="col-xs-2">Telefon</th>
+      <th class="col-xs-1">Fax</th>
+      <th class="col-xs-1">Sifra</th>
+      <th class="col-xs-1">SWIFT</th>
+      <th class="col-xs-1">Broj racuna</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr *ngFor="let banka of pageset.content; let i = index">
+      <td class="col-1">{{banka.PIB}}</td>
+      <td class="col-1">
+        <b>{{ banka.naziv }}</b>
+      </td>
+      <td class="col-1">
+        <b>{{ banka.adresa }}</b>
+      </td>
+      <td class="col-2">
+        <b>{{ banka.email }}</b>
+      </td>
+      <td class="col-1">
+        <b>{{ banka.web }}</b>
+      </td>
+      <td class="col-2">
+        <b>{{ banka.telefon }}</b>
+      </td>
+      <td class="col-1">
+        <b>{{ banka.fax }} </b>
+      </td>
+      <td class="col-1">
+        <b>{{ banka.sifraBanke }} </b>
+      </td>
+      <td class="col-1">
+        <b>{{ banka.swift }} </b>
+      </td>
+      <td class="col-1">
+        <b>{{ banka.racunBrojRacuna }} </b>
+      </td>
+    </tr>
+    </tbody>
+  </table>
+</div>
