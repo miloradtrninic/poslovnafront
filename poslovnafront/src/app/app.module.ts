@@ -18,6 +18,7 @@ import { CityService } from './services/city.service';
 import { KursnaListaService } from './services/kursnalista.service';
 import { ValutaService } from './services/valuta.service';
 import { VrstaPlacanjaService } from './services/vrstaplacanja.service';
+import { BankComponent } from './panel/bank/bank.component';
 
 @NgModule({
   declarations: [
@@ -29,7 +30,8 @@ import { VrstaPlacanjaService } from './services/vrstaplacanja.service';
     HomeComponent,
     PanelComponent,
     CountryComponent,
-    CityComponent
+    CityComponent,
+    BankComponent
   ],
   imports: [
     FormsModule,
