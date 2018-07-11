@@ -1,5 +1,5 @@
 
 export class CountryModel {
-    constructor(public id: number , public name: string) {
+    constructor(public sifraDrzave: number , public nazivDrzave: string) {
     }
   }

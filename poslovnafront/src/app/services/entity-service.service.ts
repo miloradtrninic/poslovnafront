@@ -4,7 +4,7 @@ import {Page} from '../model/page.model';
 
 
 export abstract class AbstractService<Entity, Key> {
-  actionUrl = 'http://localhost:8080/api';
+  actionUrl = 'http://localhost:8087/api';
   protected constructor(protected http: HttpClient, protected url: string) {
     this.actionUrl = this.actionUrl + url;
   }
