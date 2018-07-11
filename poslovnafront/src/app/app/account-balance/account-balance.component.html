@@ -1,0 +1,55 @@
+<div class="jumbotron">
+  <div class="container">
+      <div class="row">
+          <div class="col-md-6 offset-md-3">
+            <form #f="ngForm" (ngSubmit)="onSubmit(f.value, f)">
+                  <div class="form-group">
+                      <label for="brojRacuna">Account number</label>
+                      <input type="text" class="form-control" name="brojRacuna"  ngModel />
+                  </div>
+                  <div class="form-group">
+                      <label for="dozvoljeniMinus">Overdraft</label>
+                      <input type="text" class="form-control" name="dozvoljeniMinus" ngModel/>   
+                  </div>
+                  <div class = "form-group">
+                    <label>Currency </label>
+                    <div>
+                        <select name="valuta" id="valuta" ngModel required>
+                                <option *ngFor="let t of valute" value="{{t.sifra}}">{{t.naziv}}</option>
+                        </select>
+                    </div>
+                  </div>
+
+                  <div class="form-group">
+                      <button class="btn btn-primary">Add</button>
+                  </div>
+              </form>
+          </div>
+      </div>
+  </div>
+</div>
+
+<table class="blueTable" border="1">
+        <thead>
+        <tr>
+                <th>Account number</th>
+                <th>Overdraft</th>
+                <th>Date</th>
+                <th>Valid</th>
+                <th></th>
+        </tr>
+        </thead>
+        <tbody *ngFor="let user of racuni">
+        <tr>
+        <td>{{user.brojRacuna}}</td>
+        <td>{{user.dozvoljeniMinus}}</td>
+        <td>{{user.datumOtvaranja}}</td>
+        <td *ngIf="user.vazeci;else other_content">Yes</td>
+        <td><ng-template #other_content>No</ng-template></td>
+        
+        </tr>
+        
+        </tbody>
+        </table>
+
+
