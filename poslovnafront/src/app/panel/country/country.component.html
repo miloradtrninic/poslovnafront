@@ -31,27 +31,27 @@
 </div>
 
 <nav>
-    <ul class="pagination pagination-sm justify-content-center" *ngIf="pageset.totalPages > 0">
-      <li class="page-item">
-        <a class="page-link" *ngIf="!pageset.first" (click)="search(0)">
-          <<</a>
-      </li>
-      <li class="page-item">
-        <a class="page-link" *ngIf="!pageset.first" (click)="search(page-1)">
-          <</a>
-     </li>
-      <li *ngFor="let n of range()" [ngClass]="{'page-item': true}">
-       <a [ngClass]="{'page-link': true, 'active': n == page}" (click)="search(n)" *ngIf="n != page">{{n+1}}</a>
-        <span [ngClass]="{'page-link': true, 'active': n == page}" *ngIf="n == page">{{n+1}}</span>
-      </li>
-      <li class="page-item">
-        <a class="page-link" *ngIf="!pageset.last" (click)="search(pagePlus(1))">></a>
-      </li>
-      <li class="page-item">
-        <a class="page-link" *ngIf="!pageset.last" (click)="search(pagesCount - 1)">>></a>
-      </li>
-    </ul>
-  </nav>
+  <ul class="pagination pagination-sm justify-content-center" *ngIf="pageset.totalPages > 0">
+    <li class="page-item">
+      <a class="page-link" *ngIf="!pageset.first" (click)="search(0)">
+        <<</a>
+    </li>
+    <li class="page-item">
+      <a class="page-link" *ngIf="!pageset.first" (click)="search(page-1)">
+        <</a>
+    </li>
+    <li *ngFor="let n of range()" [ngClass]="{'page-item': true}">
+      <a [ngClass]="{'page-link': true, 'active': n == page}" (click)="search(n)" *ngIf="n != page">{{n+1}}</a>
+      <span [ngClass]="{'page-link': true, 'active': n == page}" *ngIf="n == page">{{n+1}}</span>
+    </li>
+    <li class="page-item">
+      <a class="page-link" *ngIf="!pageset.last" (click)="search(pagePlus(1))">></a>
+    </li>
+    <li class="page-item">
+      <a class="page-link" *ngIf="!pageset.last" (click)="search(pagesCount - 1)">>></a>
+    </li>
+  </ul>
+</nav>
 
 
 <!--MODALNI ZA DODAVANJE DRZAVE -->
@@ -63,7 +63,14 @@
           <div class="form-group">
             <label for="name" class="col-sm-2 control-label"> Name: </label>
             <div class="col-sm-10">
-              <input type="text" ngModel #name="ngModel" name="nazivDrzave" class="form-control" id="nazivDrzave">  </div>
+              <input type="text" ngModel #name="ngModel" name="nazivDrzave" class="form-control" id="nazivDrzave">
+            </div>
+          </div>
+          <div class="form-group">
+            <label for="name" class="col-sm-2 control-label"> Sifra: </label>
+            <div class="col-sm-10">
+              <input type="text" ngModel #name="ngModel" name="sifraDrzave" class="form-control" id="sifraDrzave">
+            </div>
           </div>
           <input type="submit" class="btn btn-primary" value="Add " />
         </form>
@@ -83,9 +90,16 @@
         <form class="form-horizontal" #editForm="ngForm" (ngSubmit)="editCountry()">
 
           <div class="form-group">
-            <label for="name" class="col-sm-2 control-label"> Name: </label>
+            <label for="name" class="col-sm-2 control-label"> Naziv: </label>
             <div class="col-sm-10">
               <input type="text" ngModel #name="ngModel" name="nazivDrzave" class="form-control" id="nazivDrzave">
+
+            </div>
+          </div>
+          <div class="form-group">
+            <label for="name" class="col-sm-2 control-label"> Sifra: </label>
+            <div class="col-sm-10">
+              <input type="text" ngModel #name="ngModel" name="sifraDrzave" class="form-control" id="sifraDrzave">
             </div>
           </div>
           <div class="form-group">
