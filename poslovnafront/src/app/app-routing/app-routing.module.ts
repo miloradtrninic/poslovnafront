@@ -10,6 +10,7 @@ import { PanelComponent } from '../panel/panel.component';
 import { CountryComponent } from '../panel/country/country.component';
 import { CityComponent } from '../panel/city/city.component';
 import {BankComponent} from '../panel/bank/bank.component';
+import { VrstaplacanjaComponent } from '../panel/vrstaplacanja/vrstaplacanja.component';
 
 
 const routes: Routes = [
@@ -20,7 +21,8 @@ const routes: Routes = [
   {path: 'panel', component: PanelComponent , children : [
     {path: 'drzava' , component: CountryComponent},
     {path: 'naseljenomesto', component: CityComponent},
-    {path: 'banka' , component: BankComponent}
+    {path: 'banka' , component: BankComponent},
+    {path: 'vrstaplacanja' , component: VrstaplacanjaComponent},
   ]},
 ];
 

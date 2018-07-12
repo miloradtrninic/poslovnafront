@@ -1,14 +1,15 @@
-
+import {Component, OnInit, ViewChild} from '@angular/core';
 import { Injectable } from '@angular/core';
 import {HttpClient} from '@angular/common/http';
-import { CountryModel } from '../model/country.model';
 import { AbstractService } from './entity-service.service';
 import { VrstaPlacanjaModel } from '../model/vrstaplacanja.model';
 
-@Injectable()
+@Injectable({
+providedIn: 'root'
+})
 export class VrstaPlacanjaService extends AbstractService<VrstaPlacanjaModel, number>  {
 
-  constructor(http: HttpClient) {
+  constructor(protected http: HttpClient) {
     super(http, '/vrstaplacanja');
   }
 }
