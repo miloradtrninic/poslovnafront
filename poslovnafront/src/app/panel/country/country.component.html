@@ -9,21 +9,26 @@
 <div class="table-responsive">
   <table class="table table-sm table-striped table-bordered">
     <thead class="thead-dark">
-      <tr class="d-flex">
-        <th class="col-2">Sifra</th>
-        <th class="col-6">Naziv</th>
-        <th class="col-2">&nbsp;</th>
+      <tr>
+        <th class="col-xs-2">Sifra</th>
+        <th class="col-xs-6">Naziv</th>
+        <th class="col-xs-2">&nbsp;</th>
+        <th class="col-xs-2">&nbsp;</th>
       </tr>
     </thead>
     <tbody>
-      <tr class="d-flex" *ngFor="let count of pageset.content; let i = index">
-        <td class="col-2">{{count.sifraDrzave}}</td>
-        <td class="col-6">
+      <tr *ngFor="let count of pageset.content; let i = index">
+        <td class="col-xs-2">{{count.sifraDrzave}}</td>
+        <td class="col-xs-6">
           <b>{{ count.nazivDrzave | uppercase }}</b>
         </td>
-        <td class="col-2">
+        <td class="col-xs-2">
           <button class="btn btn-success" (click)="fillField(count)" data-toggle="modal" data-target="#editCountry">
-            Edit country </button>
+            Izmeni drzavu </button>
+        </td>
+        <td class="col-xs-2">
+          <button class="btn btn-primary" (click)="selected = count" data-toggle="modal" data-target="#addCity">
+            Dodaj grad </button>
         </td>
       </tr>
     </tbody>
@@ -61,15 +66,15 @@
       <div class="modal-body">
         <form class="form-horizontal" #addForm="ngForm" (submit)="addCountry()">
           <div class="form-group">
-            <label for="name" class="col-sm-2 control-label"> Name: </label>
+            <label for="nazivDrzave" class="col-sm-2 control-label"> Name: </label>
             <div class="col-sm-10">
-              <input type="text" ngModel #name="ngModel" name="nazivDrzave" class="form-control" id="nazivDrzave">
+              <input type="text" ngModel #name="ngModel" name="nazivDrzave" class="form-control">
             </div>
           </div>
           <div class="form-group">
-            <label for="name" class="col-sm-2 control-label"> Sifra: </label>
+            <label for="sifraDrzave" class="col-sm-2 control-label"> Sifra: </label>
             <div class="col-sm-10">
-              <input type="text" ngModel #name="ngModel" name="sifraDrzave" class="form-control" id="sifraDrzave">
+              <input type="text" ngModel #name="ngModel" name="sifraDrzave" class="form-control">
             </div>
           </div>
           <input type="submit" class="btn btn-primary" value="Add " />
@@ -79,31 +84,52 @@
   </div>
 </div>
 
-
+<div id="addCity" class="modal fade" role="dialog">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-body" style="margin: 1em">
+        <form class="form-horizontal" #addCityF="ngForm" (submit)="addCity()">
+          <div class="form-group">
+            <label for="nazivGrada" class="col-sm-2 control-label"> Naziv: </label>
+            <input type="text" ngModel #name="ngModel" name="nazivGrada" class="form-control">
+          </div>
+          <div class="form-group">
+            <label for="sifraGrada" class="col-sm-2 control-label"> Sifra: </label>
+            <input name="sifraGrada" type="text" ngModel #sifraGrada="ngModel"  class="form-control">
+          </div>
+          <div class="form-group">
+            <label for="pttOznaka" class="col-sm-2 control-label"> PTT Oznaka: </label>
+            <input name="pttOznaka" type="text" ngModel #pttOznaka="ngModel"  class="form-control">
+          </div>
+          <input type="submit" class="btn btn-primary" value="Dodaj grad" />
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
 
 
 <!-- MODALNI ZA EDIT KATEGORIJE -->
 <div id="editCountry" class="modal fade" role="dialog">
   <div class="modal-dialog">
     <div class="modal-content">
-      <div class="modal-body">
+      <div class="modal-body" style="margin: 3em">
         <form class="form-horizontal" #editForm="ngForm" (ngSubmit)="editCountry()">
-
           <div class="form-group">
-            <label for="name" class="col-sm-2 control-label"> Naziv: </label>
+            <label for="nazivDrzave" class="col-sm-2 control-label"> Naziv: </label>
             <div class="col-sm-10">
               <input type="text" ngModel #name="ngModel" name="nazivDrzave" class="form-control" id="nazivDrzave">
 
             </div>
           </div>
           <div class="form-group">
-            <label for="name" class="col-sm-2 control-label"> Sifra: </label>
+            <label for="sifraDrzave" class="col-sm-2 control-label"> Sifra: </label>
             <div class="col-sm-10">
               <input type="text" ngModel #name="ngModel" name="sifraDrzave" class="form-control" id="sifraDrzave">
             </div>
           </div>
           <div class="form-group">
-            <input type="submit" class="btn btn-primary" value="Edit country" />
+            <input type="submit" class="btn btn-primary" value="Izmeni drzavu" />
           </div>
         </form>
       </div>

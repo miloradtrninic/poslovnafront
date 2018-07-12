@@ -20,6 +20,8 @@ import { ValutaService } from './services/valuta.service';
 import { VrstaPlacanjaService } from './services/vrstaplacanja.service';
 import { BankComponent } from './panel/bank/bank.component';
 import {BankService} from './services/bank.service';
+import {ToastrModule} from 'ngx-toastr';
+import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 
 @NgModule({
   declarations: [
@@ -35,10 +37,12 @@ import {BankService} from './services/bank.service';
     BankComponent
   ],
   imports: [
+    BrowserModule,
+    BrowserAnimationsModule,
     FormsModule,
     HttpClientModule,
-    BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    ToastrModule.forRoot()
   ],
   providers: [
     UploadFileService,

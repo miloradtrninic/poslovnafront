@@ -3,7 +3,7 @@ import { Pagination } from '../../pagination';
 import { CityModel } from '../../model/city.model';
 import { NgForm } from '@angular/forms';
 import { CityService } from '../../services/city.service';
- 
+
  @Component({
    selector: 'app-city',
    templateUrl: './city.component.html',
@@ -20,15 +20,14 @@ export class CityComponent extends Pagination<CityModel, string> implements OnIn
   @Output() addedCity: EventEmitter<any> = new EventEmitter();
 
   constructor(public cityService: CityService ) {
-    super(cityService);  
- } 
- 
+    super(cityService);
+ }
    ngOnInit() {
     this.search(0);
   }
 
   addCountry() {
-    const dir: CityModel = new CityModel(0, this.form.value['naziv']);
+    /*const dir: CityModel = new CityModel(0, this.form.value['naziv']);
     this.cityService.insert(dir).subscribe(
       resp => {
         this.pageset.content.push(resp);
@@ -36,7 +35,7 @@ export class CityComponent extends Pagination<CityModel, string> implements OnIn
       }, error => {
         this.message = JSON.stringify(error);
       }
-    );
+    );*/
   }
 
   fillField(selected) {
