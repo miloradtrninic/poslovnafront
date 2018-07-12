@@ -26,7 +26,7 @@ export class CountryComponent extends Pagination<CountryModel, string> implement
   }
 
   addCountry() {
-    const dir: CountryModel = new CountryModel(0, this.form.value['nazivDrzave']);
+    const dir: CountryModel = new CountryModel(this.form.value['sifraDrzave'], this.form.value['nazivDrzave']);
     this.countryService.insert(dir).subscribe(
       resp => {
         this.pageset.content.push(resp);
