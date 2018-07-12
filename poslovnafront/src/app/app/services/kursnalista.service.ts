@@ -1,4 +1,3 @@
-import { KursnaListaCreation } from './../../model/kursnaListaCreation.model';
 
 import { Injectable } from '@angular/core';
 import {HttpClient} from '@angular/common/http';
@@ -7,7 +6,7 @@ import { AbstractService } from './entity-service.service';
 import { KursnaListaModel } from '../model/kursnalista.model';
 
 @Injectable()
-export class KursnaListaService extends AbstractService<KursnaListaCreation, number>  {
+export class KursnaListaService extends AbstractService<KursnaListaModel, number>  {
 
   constructor(http: HttpClient) {
     super(http, '/kursnalista');

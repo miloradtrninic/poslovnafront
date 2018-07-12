@@ -1,5 +1,3 @@
-import { NewkursnalistaComponent } from './../panel/kursnalista/newkursnalista/newkursnalista.component';
-import { KursnalistaComponent } from './../panel/kursnalista/kursnalista.component';
 
 import { ClearingimportComponent } from '../clearingimport/clearingimport.component';
 import { XmlImportComponent } from '../xml-import/xml-import.component';
@@ -28,8 +26,6 @@ const routes: Routes = [
     {path: 'banka' , component: BankComponent},
     {path: 'vrstaplacanja' , component: VrstaplacanjaComponent},
     {path: 'valuta' , component: ValutaComponent},
-    {path: 'lista', component: KursnalistaComponent},
-    {path: 'novakursnalista', component: NewkursnalistaComponent}
   ]},
 ];
 

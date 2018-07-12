@@ -1,5 +1,3 @@
-import { KursnaListaService } from './app/services/kursnalista.service';
-import { KursnalistaComponent } from './panel/kursnalista/kursnalista.component';
 import { UploadFileService } from './services/fileupload.service';
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
@@ -17,6 +15,7 @@ import { CountryComponent } from './panel/country/country.component';
 import { CityComponent } from './panel/city/city.component';
 import { CountryService } from './services/country.service';
 import { CityService } from './services/city.service';
+import { KursnaListaService } from './services/kursnalista.service';
 import { ValutaService } from './services/valuta.service';
 import { VrstaPlacanjaService } from './services/vrstaplacanja.service';
 import { BankComponent } from './panel/bank/bank.component';
@@ -25,7 +24,6 @@ import {ToastrModule} from 'ngx-toastr';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import { VrstaplacanjaComponent } from './panel/vrstaplacanja/vrstaplacanja.component';
 import { ValutaComponent } from './panel/valuta/valuta.component';
-import { NewkursnalistaComponent } from './panel/kursnalista/newkursnalista/newkursnalista.component';
 
 @NgModule({
   declarations: [
@@ -40,9 +38,7 @@ import { NewkursnalistaComponent } from './panel/kursnalista/newkursnalista/newk
     CityComponent,
     VrstaplacanjaComponent,
     BankComponent,
-    ValutaComponent,
-    KursnalistaComponent,
-    NewkursnalistaComponent
+    ValutaComponent
   ],
   imports: [
     BrowserModule,
@@ -56,10 +52,11 @@ import { NewkursnalistaComponent } from './panel/kursnalista/newkursnalista/newk
     UploadFileService,
     CountryService,
     CityService,
+    KursnaListaService,
     ValutaService,
     VrstaPlacanjaService,
-    BankService,
-    KursnaListaService
+    BankService
+
   ],
   bootstrap: [AppComponent]
 })
