@@ -22,8 +22,8 @@ export class ValutaComponent extends Pagination<ValutaModel, number> implements 
   ngOnInit() {
     this.route.params.subscribe(
       params => {
+        console.log(params['drzava']);
         if (params['drzava'] === '' || params['drzava'] === undefined) {
-
           this.sifraDrzave = '';
           this.search(0);
         } else {
@@ -37,7 +37,48 @@ export class ValutaComponent extends Pagination<ValutaModel, number> implements 
   fillField(selected) {
     this.eForm.controls['naziv'].setValue(selected.naziv);
     this.eForm.controls['sifra'].setValue(selected.sifra);
+    this.eForm.controls['domaca'].setValue(selected.domaca);
     this.selected = selected;
+  }
+
+  public firstPage() {
+    if (this.sifraDrzave === '') {
+      this.search(0);
+    } else {
+      this.search('drzavaSifraDrzave=' + this.sifraDrzave);
+    }
+  }
+
+  public lastPage() {
+    if (this.sifraDrzave === '') {
+      this.search(this.pageset.totalPages - 1);
+    } else {
+      this.search('drzavaSifraDrzave=' + this.sifraDrzave);
+    }
+  }
+
+  public nextPage() {
+    if (this.sifraDrzave === '') {
+      this.search(this.page + 1);
+    } else {
+      this.search('drzavaSifraDrzave=' + this.sifraDrzave);
+    }
+  }
+
+  public previousPage() {
+    if (this.sifraDrzave === '') {
+      this.search(this.page - 1);
+    } else {
+      this.search('drzavaSifraDrzave=' + this.sifraDrzave);
+    }
+  }
+
+  public goToPage(n: number) {
+    if (this.sifraDrzave === '') {
+      this.search(n);
+    } else {
+      this.search('drzavaSifraDrzave=' + this.sifraDrzave);
+    }
   }
 
 }

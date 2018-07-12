@@ -26,6 +26,7 @@ const routes: Routes = [
     {path: 'banka' , component: BankComponent},
     {path: 'vrstaplacanja' , component: VrstaplacanjaComponent},
     {path: 'valuta' , component: ValutaComponent},
+    {path: 'valuta/:drzava' , component: ValutaComponent}
   ]},
 ];
 

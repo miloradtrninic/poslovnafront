@@ -18,7 +18,7 @@ export abstract class AbstractService<Entity, Key> {
     return this.http.get<Entity>(`${this.actionUrl}/${id}`);
   }
   insert(toInsert: any): Observable<Entity> {
-    return this.http.post<Entity>(this.actionUrl + '/insert', toInsert,);
+    return this.http.post<Entity>(this.actionUrl + '/insert', toInsert);
   }
   delete(id: Key): Observable<any> {
     let params = new HttpParams();

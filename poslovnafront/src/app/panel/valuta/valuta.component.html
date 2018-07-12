@@ -8,7 +8,6 @@
   <table class="table table-sm table-striped table-bordered">
     <thead class="thead-dark">
       <tr>
-        <th class="col-2">#</th>
         <th class="col-2">Sifra</th>
         <th class="col-2">Naziv</th>
         <th class="col-2">Domaca</th>
@@ -18,11 +17,10 @@
     </thead>
     <tbody>
       <tr *ngFor="let count of pageset.content; let i = index">
-        <td class="col-2">{{ count.id  }}</td>
         <td class="col-2">{{count.sifra | uppercase}}</td>
         <td class="col-2">{{ count.naziv }}</td>
-        <td class="col-2">{{ count.domaca }}</td>
-        <td class="col-2">{{ count.drzavaSifraDrzava | uppercase }}</td>
+        <td class="col-2">{{ count.domaca == true ? 'Da' : 'Ne'}}</td>
+        <td class="col-2">{{ count.drzavaSifraDrzave }}</td>
         <td class="col-2">
           <button class="btn btn-success" (click)="fillField(count)" data-toggle="modal" data-target="#editForm">
             Izmeni valutu </button>
@@ -37,22 +35,22 @@
 <nav>
   <ul class="pagination pagination-sm justify-content-center" *ngIf="pageset.totalPages > 0">
     <li class="page-item">
-     <a class="page-link" *ngIf="!pageset.first" (click)="search(0)">
+     <a class="page-link" *ngIf="!pageset.first" (click)="firstPage()">
         <<</a>
     </li>
     <li class="page-item">
-      <a class="page-link" *ngIf="!pageset.first" (click)="search(page-1)">
+      <a class="page-link" *ngIf="!pageset.first" (click)="previousPage()">
         <</a>
    </li>
     <li *ngFor="let n of range()" [ngClass]="{'page-item': true}">
-      <a [ngClass]="{'page-link': true, 'active': n == page}" (click)="search(n)" *ngIf="n != page">{{n+1}}</a>
+      <a [ngClass]="{'page-link': true, 'active': n == page}" (click)="goToPage(n)" *ngIf="n != page">{{n+1}}</a>
       <span [ngClass]="{'page-link': true, 'active': n == page}" *ngIf="n == page">{{n+1}}</span>
     </li>
     <li class="page-item">
-      <a class="page-link" *ngIf="!pageset.last" (click)="search(pagePlus(1))">></a>
+      <a class="page-link" *ngIf="!pageset.last" (click)="nextPage()">></a>
     </li>
     <li class="page-item">
-      <a class="page-link" *ngIf="!pageset.last" (click)="search(pagesCount - 1)">>></a>
+      <a class="page-link" *ngIf="!pageset.last" (click)="lastPage()">>></a>
     </li>
   </ul>
 </nav>
@@ -76,7 +74,7 @@
             <input name="domaca" type="checkbox" ngModel #domaca="ngModel"  class="form-control">
           </div>
             <input type="submit" class="btn btn-primary" value="Edit " />
-         
+
         </form>
       </div>
     </div>

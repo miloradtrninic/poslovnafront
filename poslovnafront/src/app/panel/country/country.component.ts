@@ -1,4 +1,4 @@
-import { Component, OnInit, ViewChild, Output,EventEmitter } from '@angular/core';
+import {Component, OnInit, ViewChild, Output, EventEmitter} from '@angular/core';
 import { NgForm } from '@angular/forms';
 import { CountryModel } from '../../model/country.model';
 import { CountryService } from '../../services/country.service';
@@ -9,6 +9,7 @@ import {CityService} from '../../services/city.service';
 import {ValutaService} from '../../services/valuta.service';
 import {CityCreation} from '../../model/city.creation';
 import {ToastrService} from 'ngx-toastr';
+import {ValutaCreation} from '../../model/valuta.creation';
 
 @Component({
   selector: 'app-country',
@@ -24,15 +25,13 @@ export class CountryComponent extends Pagination<CountryModel, string> implement
   @ViewChild('addCityF') addCityForm: NgForm;
   @ViewChild('addValuteF') addValuteForm: NgForm;
   @Output() addedCountry: EventEmitter<any> = new EventEmitter();
-  constructor(public countryService: CountryService, private cityService: CityService, 
-      private toast: ToastrService, private valuteService : ValutaService) {
+  constructor(public countryService: CountryService, private cityService: CityService,
+      private toast: ToastrService, private valuteService: ValutaService) {
         super(countryService);
    }
 
   ngOnInit() {
-
     this.search(0);
-
   }
 
   addCountry() {
@@ -61,10 +60,11 @@ export class CountryComponent extends Pagination<CountryModel, string> implement
   }
 
   addValute() {
-    const dir: ValutaModel = new ValutaModel(this.addValuteForm.value['sifra'],
+    const dir: ValutaCreation = new ValutaCreation(this.addValuteForm.value['sifra'],
                                             this.addValuteForm.value['naziv'],
-                                            this.addValuteForm.value['domaca'], 
+                                            this.addValuteForm.value['domaca'].value,
                                             this.selected.sifraDrzave);
+    console.log(dir);
     this.valuteService.insert(dir).subscribe(
     resp => {
       this.toast.success('Valuta dodata.');
