@@ -61,14 +61,14 @@ export class CountryComponent extends Pagination<CountryModel, string> implement
         this.selected = selected;
       }
 
-      editCountry() {
-        this.selected.nazivDrzave = this.eForm.controls['nazivDrzave'].value;
-        this.countryService.update(this.selected).subscribe(
-          resp => {
-            console.log(resp);
-          }, error => {
-            this.message = JSON.stringify(error);
-          }
-        );
+  editCountry() {
+    this.selected.nazivDrzave = this.eForm.controls['nazivDrzave'].value;
+    this.countryService.update(this.selected).subscribe(
+      resp => {
+        console.log(resp);
+      }, error => {
+        this.message = JSON.stringify(error);
       }
+    );
+  }
 }

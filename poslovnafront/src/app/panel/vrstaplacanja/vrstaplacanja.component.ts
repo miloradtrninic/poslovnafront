@@ -16,7 +16,7 @@ export class VrstaplacanjaComponent extends Pagination<VrstaPlacanjaModel, numbe
   @ViewChild('addForm') form: NgForm;
   @ViewChild('editForm') eForm: NgForm;
   constructor(public vrstaPlacanjaService: VrstaPlacanjaService) {
-    super(vrstaPlacanjaService);      
+    super(vrstaPlacanjaService);
   }
 
   ngOnInit() {

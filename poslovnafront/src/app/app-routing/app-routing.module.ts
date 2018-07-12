@@ -21,6 +21,7 @@ const routes: Routes = [
   {path: 'panel', component: PanelComponent , children : [
     {path: 'drzava' , component: CountryComponent},
     {path: 'naseljenomesto', component: CityComponent},
+    {path: 'naseljenomesto/:drzava', component: CityComponent},
     {path: 'banka' , component: BankComponent},
     {path: 'vrstaplacanja' , component: VrstaplacanjaComponent},
   ]},

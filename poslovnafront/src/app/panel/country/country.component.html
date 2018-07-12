@@ -11,7 +11,8 @@
     <thead class="thead-dark">
       <tr>
         <th class="col-xs-2">Sifra</th>
-        <th class="col-xs-6">Naziv</th>
+        <th class="col-xs-4">Naziv</th>
+        <th class="col-xs-2">&nbsp;</th>
         <th class="col-xs-2">&nbsp;</th>
         <th class="col-xs-2">&nbsp;</th>
       </tr>
@@ -19,7 +20,7 @@
     <tbody>
       <tr *ngFor="let count of pageset.content; let i = index">
         <td class="col-xs-2">{{count.sifraDrzave}}</td>
-        <td class="col-xs-6">
+        <td class="col-xs-4">
           <b>{{ count.nazivDrzave | uppercase }}</b>
         </td>
         <td class="col-xs-2">
@@ -30,6 +31,10 @@
           <button class="btn btn-primary" (click)="selected = count" data-toggle="modal" data-target="#addCity">
             Dodaj grad </button>
         </td>
+        <td class="col-xs-2">
+          <button class="btn btn-primary" routerLink="/panel/naseljenomesto/{{count.sifraDrzave}}">
+            <i class="glyphicon glyphicon-tower"></i>Gradovi</button>
+        </td>
       </tr>
     </tbody>
   </table>
@@ -38,22 +43,22 @@
 <nav>
   <ul class="pagination pagination-sm justify-content-center" *ngIf="pageset.totalPages > 0">
     <li class="page-item">
-      <a class="page-link" *ngIf="!pageset.first" (click)="search(0)">
+      <a class="page-link" *ngIf="!pageset.first" (click)="firstPage()">
         <<</a>
     </li>
     <li class="page-item">
-      <a class="page-link" *ngIf="!pageset.first" (click)="search(page-1)">
+      <a class="page-link" *ngIf="!pageset.first" (click)="previousPage()">
         <</a>
     </li>
     <li *ngFor="let n of range()" [ngClass]="{'page-item': true}">
-      <a [ngClass]="{'page-link': true, 'active': n == page}" (click)="search(n)" *ngIf="n != page">{{n+1}}</a>
+      <a [ngClass]="{'page-link': true, 'active': n == page}" (click)="goToPage(n)" *ngIf="n != page">{{n+1}}</a>
       <span [ngClass]="{'page-link': true, 'active': n == page}" *ngIf="n == page">{{n+1}}</span>
     </li>
     <li class="page-item">
-      <a class="page-link" *ngIf="!pageset.last" (click)="search(pagePlus(1))">></a>
+      <a class="page-link" *ngIf="!pageset.last" (click)="nextPage()">></a>
     </li>
     <li class="page-item">
-      <a class="page-link" *ngIf="!pageset.last" (click)="search(pagesCount - 1)">>></a>
+      <a class="page-link" *ngIf="!pageset.last" (click)="lastPage()">>></a>
     </li>
   </ul>
 </nav>

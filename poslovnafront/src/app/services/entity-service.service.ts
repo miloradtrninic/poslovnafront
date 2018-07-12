@@ -4,15 +4,16 @@ import {Page} from '../model/page.model';
 
 
 export abstract class AbstractService<Entity, Key> {
-  actionUrl = 'http://localhost:8087/api';
+  actionUrl = 'http://localhost:8080/api';
   protected constructor(protected http: HttpClient, protected url: string) {
     this.actionUrl = this.actionUrl + url;
   }
-  getAll(page: number, pageSize: number): Observable<any> {
+  getAll(page: number, pageSize: number, searchQuery?: string): Observable<any> {
     let params = new HttpParams();
+    searchQuery = '?' + searchQuery;
     params = params.append('page', page.toString());
     params = params.append('size', pageSize.toString());
-    return this.http.get<Page<Entity>>(this.actionUrl + '/all', {params: params});
+    return this.http.get<Page<Entity>>(this.actionUrl + '/all' + searchQuery, {params: params});
   }
   getOne(id: Key): Observable<any> {
     return this.http.get<Entity>(`${this.actionUrl}/${id}`);
