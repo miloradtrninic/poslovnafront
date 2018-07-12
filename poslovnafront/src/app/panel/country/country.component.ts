@@ -4,7 +4,9 @@ import { CountryModel } from '../../model/country.model';
 import { CountryService } from '../../services/country.service';
 import { Pagination } from '../../pagination';
 import {CityModel} from '../../model/city.model';
+import {ValutaModel} from '../../model/valuta.model';
 import {CityService} from '../../services/city.service';
+import {ValutaService} from '../../services/valuta.service';
 import {CityCreation} from '../../model/city.creation';
 import {ToastrService} from 'ngx-toastr';
 
@@ -20,8 +22,10 @@ export class CountryComponent extends Pagination<CountryModel, string> implement
   @ViewChild('addForm') form: NgForm;
   @ViewChild('editForm') eForm: NgForm;
   @ViewChild('addCityF') addCityForm: NgForm;
+  @ViewChild('addValuteF') addValuteForm: NgForm;
   @Output() addedCountry: EventEmitter<any> = new EventEmitter();
-  constructor(public countryService: CountryService, private cityService: CityService, private toast: ToastrService) {
+  constructor(public countryService: CountryService, private cityService: CityService, 
+      private toast: ToastrService, private valuteService : ValutaService) {
         super(countryService);
    }
 
@@ -49,6 +53,21 @@ export class CountryComponent extends Pagination<CountryModel, string> implement
     this.cityService.insert(dir).subscribe(
     resp => {
       this.toast.success('Grad dodat.');
+    }, error => {
+      this.message = JSON.stringify(error);
+      this.toast.error(this.message);
+    }
+  );
+  }
+
+  addValute() {
+    const dir: ValutaModel = new ValutaModel(this.addValuteForm.value['sifra'],
+                                            this.addValuteForm.value['naziv'],
+                                            this.addValuteForm.value['domaca'], 
+                                            this.selected.sifraDrzave);
+    this.valuteService.insert(dir).subscribe(
+    resp => {
+      this.toast.success('Valuta dodata.');
     }, error => {
       this.message = JSON.stringify(error);
       this.toast.error(this.message);

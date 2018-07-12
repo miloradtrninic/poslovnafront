@@ -1,5 +1,6 @@
 
 export class ValutaModel {
-    constructor(public id: number , public name: string) {
+    constructor(public sifra: number , public naziv: string, public domaca: boolean, 
+      public sifraDrzave : string ) {
     }
   }

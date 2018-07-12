@@ -23,6 +23,7 @@ import {BankService} from './services/bank.service';
 import {ToastrModule} from 'ngx-toastr';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import { VrstaplacanjaComponent } from './panel/vrstaplacanja/vrstaplacanja.component';
+import { ValutaComponent } from './panel/valuta/valuta.component';
 
 @NgModule({
   declarations: [
@@ -36,7 +37,8 @@ import { VrstaplacanjaComponent } from './panel/vrstaplacanja/vrstaplacanja.comp
     CountryComponent,
     CityComponent,
     VrstaplacanjaComponent,
-    BankComponent
+    BankComponent,
+    ValutaComponent
   ],
   imports: [
     BrowserModule,
