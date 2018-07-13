@@ -4,6 +4,7 @@ import {NgForm} from '@angular/forms';
 import { UkidanjeModel } from '../model/ukidanje.model';
 import { ValutaModel } from '../model/valuta.model';
 import { AccountBalanceService } from '../services/account-balance.service';
+import { Bank } from '../model/bank.model';
 
 
 @Component({
@@ -19,12 +20,14 @@ export class AccountBalanceComponent implements OnInit {
   racuniBez : Array<ObracunskiRacunBanke>
   racun : ObracunskiRacunBanke
   ukidanje : UkidanjeModel
+  banke : Array<Bank>
   constructor(private accountService : AccountBalanceService) {
     this.valute = [];
     this.racuni = [];
     this.racuniBez = [];
     this.racun = new ObracunskiRacunBanke();
     this.ukidanje = new UkidanjeModel();
+    this.banke = [];
    }
    
 
@@ -39,6 +42,12 @@ export class AccountBalanceComponent implements OnInit {
    this.accountService.getRacuni().subscribe(
     (data: Array<ObracunskiRacunBanke>) =>{
       this.racuni = data
+     } 
+  );
+
+  this.accountService.getBankeBezObracunskog().subscribe(
+    (data: Array<Bank>) =>{
+      this.banke = data
      } 
   );
 
