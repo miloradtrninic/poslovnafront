@@ -67,4 +67,8 @@ getReport2(){
   return this.httpClient.get(this.actionUrl + "/obracunskiRacun/izvestaj2");
 }
    
+
+getBankeBezObracunskog() :  Observable<any>{
+  return this.httpClient.get(this.actionUrl + '/banka/allNoAccount');
+}
 }
