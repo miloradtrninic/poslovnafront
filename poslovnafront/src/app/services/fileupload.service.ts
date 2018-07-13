@@ -9,7 +9,7 @@ export class UploadFileService {
   private clearingUrl = 'http://localhost:8080/api/upload/clearing';
 
   pushFileToStorageRtgs(file: File): Observable<HttpEvent<{}>> {
-    let formdata: FormData = new FormData();
+    const formdata: FormData = new FormData();
 
     formdata.append('file', file);
 
@@ -22,7 +22,7 @@ export class UploadFileService {
   }
 
   pushFileToStorageClearing(file: File): Observable<HttpEvent<{}>> {
-    let formdata: FormData = new FormData();
+    const formdata: FormData = new FormData();
 
     formdata.append('file', file);
 
