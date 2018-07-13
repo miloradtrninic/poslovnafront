@@ -27,6 +27,8 @@ import { VrstaplacanjaComponent } from './panel/vrstaplacanja/vrstaplacanja.comp
 import { ValutaComponent } from './panel/valuta/valuta.component';
 import { AccountBalanceComponent } from './account-balance/account-balance.component';
 import { ReportComponent } from './report/report.component';
+import { KursnalistaComponent } from './panel/kursnalista/kursnalista.component';
+import { NovakursnalistaComponent } from './panel/kursnalista/novakursnalista/novakursnalista.component';
 
 @NgModule({
   declarations: [
@@ -43,7 +45,9 @@ import { ReportComponent } from './report/report.component';
     BankComponent,
     ValutaComponent,
     AccountBalanceComponent,
-    ReportComponent
+    ReportComponent,
+    KursnalistaComponent,
+    NovakursnalistaComponent
   ],
   imports: [
     BrowserModule,

@@ -1,4 +1,4 @@
-
+import { KursnalistaComponent } from './../panel/kursnalista/kursnalista.component';
 import { ClearingimportComponent } from '../clearingimport/clearingimport.component';
 import { XmlImportComponent } from '../xml-import/xml-import.component';
 import { NgModule, Component } from '@angular/core';
@@ -14,6 +14,7 @@ import { VrstaplacanjaComponent } from '../panel/vrstaplacanja/vrstaplacanja.com
 import { ValutaComponent } from '../panel/valuta/valuta.component';
 import { AccountBalanceComponent } from '../account-balance/account-balance.component';
 import { ReportComponent } from '../report/report.component';
+import { NovakursnalistaComponent } from '../panel/kursnalista/novakursnalista/novakursnalista.component';
 
 
 const routes: Routes = [
@@ -28,7 +29,9 @@ const routes: Routes = [
     {path: 'banka' , component: BankComponent},
     {path: 'vrstaplacanja' , component: VrstaplacanjaComponent},
     {path: 'valuta' , component: ValutaComponent},
-    {path: 'valuta/:drzava' , component: ValutaComponent}
+    {path: 'valuta/:drzava' , component: ValutaComponent},
+    {path: 'lista', component: KursnalistaComponent},
+    {path: 'novakursnalista', component: NovakursnalistaComponent}
   ]},
   {path: 'account-balance', component: AccountBalanceComponent},
   {path: 'report', component: ReportComponent}

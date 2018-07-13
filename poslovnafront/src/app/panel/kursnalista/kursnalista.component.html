@@ -1,3 +1,26 @@
-<p>
-  kursnalista works!
-</p>
+<h1 class="page-header">
+    Kursna lista
+    <button class="btn btn-primary pull-right" [routerLink]="['../novakursnalista']">
+      <i class="fa fa-plus"></i>Dodaj novu</button>
+  </h1>
+  <hr/>
+  <div class="table-responsive">
+    <table class="table table-sm table-striped table-bordered">
+      <thead class="thead-dark">
+        <tr class="d-flex">
+          <th class="col-6">ID</th>
+          <th class="col-6">Naziv</th>
+          <th class="col-2">Primenjuje se od</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr class="d-flex" *ngFor="let kursnalista of kursneliste" >
+          <td class="col-6">
+            <b>{{kursnalista.id}}</b>
+          </td>
+          <td>{{kursnalista.naziv}}</td>
+          <td>{{kursnalista.primenjujeSeOd}}</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
