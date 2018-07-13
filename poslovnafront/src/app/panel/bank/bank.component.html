@@ -1,6 +1,8 @@
 <h1 class="page-header">
   Banke
 </h1>
+<button class="btn btn-success"
+                data-toggle="modal" data-target="#novaBankaModal">Dodaj</button>
 <hr/>
 
 <div class="table-responsive">
@@ -99,6 +101,54 @@
           <a href="{{getActionUrl() + '/izvod?pocetak=' + start.value +
            '&kraj=' + end.value + '&brojRacuna=' + selectedBrRacuna}}" class="btn btn-primary btn-block">Preuzmi</a>
 
+      </div>
+    </div>
+  </div>
+</div>
+
+<div id="novaBankaModal" class="modal fade" role="dialog">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-body">
+        <form #novaBankaForm="ngForm" (ngSubmit)="onNovaBankaSubmit(novaBankaForm)">
+          <div class="form-group">
+            <label for="pib">PIB</label>
+            <input type="text" name="pib" id="pib" class="form-control" ngModel>
+          </div>
+          <div class="form-group">
+            <label for="naziv">Naziv</label>
+            <input type="text" name="naziv" id="naziv" class="form-control" ngModel>
+          </div>
+          <div class="form-group">
+            <label for="adresa">Adresa</label>
+            <input type="text" name="adresa" id="adresa" class="form-control" ngModel>
+          </div>
+          <div class="form-group">
+            <label for="email">Email</label>
+            <input type="email" name="email" id="email" class="form-control" ngModel>
+          </div>
+          <div class="form-group">
+            <label for="web">Web</label>
+            <input type="text" name="web" id="web" class="form-control" ngModel>
+          </div>
+          <div class="form-group">
+            <label for="telefon">Telefon</label>
+            <input type="text" name="telefon" id="telefon" class="form-control" ngModel>
+          </div>
+          <div class="form-group">
+            <label for="fax">Fax</label>
+            <input type="text" name="fax" id="fax" class="form-control" ngModel>
+          </div>
+          <div class="form-group">
+            <label for="sifraBanke">Sifra banke</label>
+            <input type="text" name="sifraBanke" id="sifraBanke" class="form-control" ngModel>
+          </div>
+          <div class="form-group">
+            <label for="swift">SWIFT</label>
+            <input type="text" name="swift" id="swift" class="form-control" ngModel>
+          </div>
+          <input type="submit" class="btn btn-primary" value="Dodaj" />
+        </form>
       </div>
     </div>
   </div>
