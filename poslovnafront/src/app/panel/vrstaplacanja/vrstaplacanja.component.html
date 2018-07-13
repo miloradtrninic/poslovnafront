@@ -4,8 +4,8 @@
       <i class="fa fa-plus"></i>Dodaj novu</button>
   </h1>
   <hr/>
-  
-  
+
+
   <div class="table-responsive">
     <table class="table table-sm table-striped table-bordered">
       <thead class="thead-dark">
@@ -27,7 +27,7 @@
       </tbody>
     </table>
   </div>
-  
+
   <nav>
     <ul class="pagination pagination-sm justify-content-center" *ngIf="pageset.totalPages > 0">
       <li class="page-item">
@@ -46,12 +46,12 @@
         <a class="page-link" *ngIf="!pageset.last" (click)="search(pagePlus(1))">></a>
       </li>
       <li class="page-item">
-        <a class="page-link" *ngIf="!pageset.last" (click)="search(pagesCount - 1)">>></a>
+        <a class="page-link" *ngIf="!pageset.last" (click)="search(pageset.totalPages - 1)">>></a>
       </li>
     </ul>
   </nav>
-  
-  
+
+
   <!--MODALNI ZA DODAVANJE DRZAVE -->
   <div id="addForm" class="modal fade" role="dialog">
     <div class="modal-dialog">
@@ -70,17 +70,17 @@
       </div>
     </div>
   </div>
-  
-  
-  
-  
+
+
+
+
   <!-- MODALNI ZA EDIT KATEGORIJE -->
   <div id="editCountry" class="modal fade" role="dialog">
     <div class="modal-dialog">
       <div class="modal-content">
         <div class="modal-body">
           <form class="form-horizontal" #editForm="ngForm" (ngSubmit)="edit()">
-  
+
             <div class="form-group">
               <label for="name" class="col-sm-2 control-label"> Naziv: </label>
               <div class="col-sm-10">
