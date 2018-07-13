@@ -17,6 +17,7 @@ import { CountryService } from './services/country.service';
 import { CityService } from './services/city.service';
 import { KursnaListaService } from './services/kursnalista.service';
 import { ValutaService } from './services/valuta.service';
+import { AccountBalanceService } from './services/account-balance.service';
 import { VrstaPlacanjaService } from './services/vrstaplacanja.service';
 import { BankComponent } from './panel/bank/bank.component';
 import {BankService} from './services/bank.service';
@@ -24,6 +25,8 @@ import {ToastrModule} from 'ngx-toastr';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import { VrstaplacanjaComponent } from './panel/vrstaplacanja/vrstaplacanja.component';
 import { ValutaComponent } from './panel/valuta/valuta.component';
+import { AccountBalanceComponent } from './account-balance/account-balance.component';
+import { ReportComponent } from './report/report.component';
 
 @NgModule({
   declarations: [
@@ -38,7 +41,9 @@ import { ValutaComponent } from './panel/valuta/valuta.component';
     CityComponent,
     VrstaplacanjaComponent,
     BankComponent,
-    ValutaComponent
+    ValutaComponent,
+    AccountBalanceComponent,
+    ReportComponent
   ],
   imports: [
     BrowserModule,
@@ -55,8 +60,8 @@ import { ValutaComponent } from './panel/valuta/valuta.component';
     KursnaListaService,
     ValutaService,
     VrstaPlacanjaService,
-    BankService
-
+    BankService,
+    AccountBalanceService
   ],
   bootstrap: [AppComponent]
 })

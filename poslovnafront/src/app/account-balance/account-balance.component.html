@@ -1,0 +1,110 @@
+<div class="jumbotron">
+  <div class="container">
+      <div class="row">
+          <div class="col-md-6 offset-md-3">
+            <form #f="ngForm" (ngSubmit)="onSubmit(f.value, f)">
+                  <div class="form-group">
+                      <label for="brojRacuna">Account number</label>
+                      <input type="text" class="form-control" name="brojRacuna"  ngModel />
+                  </div>
+                  <div class="form-group">
+                      <label for="dozvoljeniMinus">Overdraft</label>
+                      <input type="text" class="form-control" name="dozvoljeniMinus" ngModel/>   
+                  </div>
+                  <div class = "form-group">
+                    <label>Currency</label>
+                    <div>
+                        <select name="valuta" id="valuta" ngModel required>
+                                <option *ngFor="let t of valute" [selected]="t?.naziv === valuta?.naziv" value="{{t?.sifra}}">{{t?.naziv}}</option>
+                        </select>
+                        <button class="btn btn-primary" data-toggle="modal" data-target="#zoom">...</button>
+                    </div>
+                  </div>
+
+                  <div class="form-group">
+                      <button class="btn btn-primary">Add</button>
+                  </div>
+              </form>
+              
+          </div>
+      </div>
+  </div>
+</div>
+
+<div id="zoom" class="modal fade" role="dialog">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-body">
+        
+                <label for="name" class="col-sm-2 control-label"><h1> Currency </h1> </label>
+        </div>
+        <table class="blueTable" border="1">
+                <thead>
+                <tr>
+                        <th>Code</th>
+                        <th>Name</th>
+                        <th>Home?</th>
+                     
+                </tr>
+                </thead>
+                <tbody> 
+                        <tr *ngFor="let u of valute; let i=index;" (click)="RowSelected(u)">
+                          <td>{{u.sifra}}</td>
+                          <td>{{u.naziv}}</td>
+                          <td>{{u.domaca}}</td> 
+                        </tr> 
+    
+                
+                </tbody>
+                </table>
+        
+        </div>
+
+        <input type="submit" class="btn btn-primary" value="Close" />
+    </div>
+  </div>
+
+<table class="blueTable" border="1">
+        <thead>
+        <tr>
+                <th>Account number</th>
+                <th>Overdraft</th>
+                <th>Date</th>
+                <th>Valid</th>
+                <th></th>
+        </tr>
+        </thead>
+        <tbody *ngFor="let user of racuni">
+        <tr>
+        <td>{{user.brojRacuna}}</td>
+        <td>{{user.dozvoljeniMinus}}</td>
+        <td>{{user.datumOtvaranja}}</td>
+        <td *ngIf="user.vazeci;else other_content">Yes</td>
+        <td><ng-template #other_content>No</ng-template></td>
+        <td><button class="btn btn-primary pull-right" (click)="remove(user.brojRacuna)" data-toggle="modal" data-target="#addForm">Remove</button></td>
+        
+        </tr>
+        
+        </tbody>
+        </table>
+
+    
+    <div id="addForm" class="modal fade" role="dialog">
+            <div class="modal-dialog">
+              <div class="modal-content">
+                <div class="modal-body">
+                
+                        <label for="name" class="col-sm-2 control-label"> Account balance : </label>
+                </div>
+                <form  #forma="ngForm" (ngSubmit)="transfer(forma.value, forma)">
+                      <div class="col-sm-10">
+                            <select name="racun" ngModel required>
+                                    <option *ngFor="let t of racuniBez" name = "optiona" value="{{t.brojRacuna}}">{{t.brojRacuna}}</option>
+                            </select>
+                        </div>
+                    
+                    <button class="btn btn-primary"> Transfer </button> 
+                </form>
+                </div>
+            </div>
+          </div>

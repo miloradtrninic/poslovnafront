@@ -1,8 +1,8 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { Pagination } from '../../pagination';
-import { VrstaPlacanjaModel } from '../../app/model/vrstaplacanja.model';
 import { NgForm } from '@angular/forms';
 import { VrstaPlacanjaService } from '../../services/vrstaplacanja.service';
+import { VrstaPlacanjaModel } from '../../model/vrstaplacanja.model';
 
 @Component({
   selector: 'app-vrstaplacanja',

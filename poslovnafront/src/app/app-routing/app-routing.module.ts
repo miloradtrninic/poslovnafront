@@ -12,6 +12,8 @@ import { CityComponent } from '../panel/city/city.component';
 import {BankComponent} from '../panel/bank/bank.component';
 import { VrstaplacanjaComponent } from '../panel/vrstaplacanja/vrstaplacanja.component';
 import { ValutaComponent } from '../panel/valuta/valuta.component';
+import { AccountBalanceComponent } from '../account-balance/account-balance.component';
+import { ReportComponent } from '../report/report.component';
 
 
 const routes: Routes = [
@@ -28,6 +30,8 @@ const routes: Routes = [
     {path: 'valuta' , component: ValutaComponent},
     {path: 'valuta/:drzava' , component: ValutaComponent}
   ]},
+  {path: 'account-balance', component: AccountBalanceComponent},
+  {path: 'report', component: ReportComponent}
 ];
 
 @NgModule({
