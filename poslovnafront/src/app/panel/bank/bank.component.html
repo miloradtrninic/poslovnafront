@@ -87,7 +87,7 @@
   <div class="modal-dialog">
     <div class="modal-content">
       <div class="modal-body">
-        <form class="form" #f="ngForm" (ngSubmit)="downloadXml()">
+
           <div class="form-group">
             <label>Pocetak</label>
             <input type="date" ngModel #start="ngModel" class="form-control" name="start">
@@ -96,8 +96,9 @@
             <label>Kraj</label>
             <input type="date" ngModel #end="ngModel" class="form-control" name="end">
           </div>
-          <button type="submit" class="btn btn-primary btn-block">Preuzmi</button>
-        </form>
+          <a href="{{getActionUrl() + '/izvod?pocetak=' + start.value +
+           '&kraj=' + end.value + '&brojRacuna=' + selectedBrRacuna}}" class="btn btn-primary btn-block">Preuzmi</a>
+
       </div>
     </div>
   </div>

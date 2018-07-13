@@ -19,7 +19,9 @@ export class BankComponent extends Pagination<Bank, string> implements OnInit {
   ngOnInit() {
     this.search(0);
   }
-
+  getActionUrl(): string {
+    return this.bankService.actionUrl;
+  }
   downloadXml() {
     this.bankService.downloadXml(this.selectedBrRacuna,
       this.form.controls['start'].value,

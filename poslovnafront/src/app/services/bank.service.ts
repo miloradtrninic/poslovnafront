@@ -13,9 +13,7 @@ export class BankService extends AbstractService<Bank, string> {
   }
 
   downloadXml(brojRacuna: string, pocetak: string, kraj: string) {
-    const headers = new HttpHeaders({ 'Content-Type': 'text/xml' }).set('Accept', 'text/xml');
     return this.http.get(this.actionUrl +
-      '/izvod?pocetak=' + pocetak + '&kraj=' + kraj + '&brojRacuna=' + brojRacuna,
-      {headers: headers, responseType: 'blob'});
+      '/izvod?pocetak=' + pocetak + '&kraj=' + kraj + '&brojRacuna=' + brojRacuna);
   }
 }
